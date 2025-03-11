@@ -133,7 +133,7 @@ class _DesktopLayoutState extends State<DesktopLayout>
               Container(
                 color: AppColors.revolver,
                 width: size.width,
-                height: size.height * .9,
+                height: size.height * .8,
                 child: Padding(
                   padding: const EdgeInsets.all(8),
                   child: Column(

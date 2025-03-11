@@ -71,7 +71,7 @@ class _FooterState extends State<Footer> {
       children: [
         Container(
           color: AppColors.revolver,
-          height: 400,
+          height: MediaQuery.of(context).size.height * .61,
           child: Stack(
             children: [
               Positioned(
@@ -79,7 +79,7 @@ class _FooterState extends State<Footer> {
                 left: 0,
                 right: 0,
                 child: Container(
-                  height: 350,
+                  // height: MediaQuery.of(context).size.height * (350 / 1080),
                   decoration: const BoxDecoration(
                     color: AppColors.ebony,
                   ),
@@ -136,7 +136,7 @@ class _FooterState extends State<Footer> {
                         ? const EdgeInsets.all(35)
                         : const EdgeInsets.symmetric(
                             vertical: 40, horizontal: 16),
-                    height: isTablet ? 180 : 155,
+                    height: isTablet ? 195 : 155,
                     decoration: BoxDecoration(
                       color:
                           isLoading ? AppColors.paleSlate : AppColors.valhalla,
@@ -176,45 +176,42 @@ class _FooterState extends State<Footer> {
                               ),
                             ],
                           )
-                        : Expanded(
-                            child: Wrap(children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  myText("Excited to collaborate",
-                                      getFontSize(24)), // Adjust font size
-                                  myText(
-                                    "Let’s connect and turn ideas into reality!",
-                                    getFontSize(18), // Adjust font size
-                                  ),
-                                  const SizedBox(height: 12),
-                                  OutlinedButton.icon(
-                                    onPressed: () {
-                                      navigateToPage(context, ContactForm());
-                                    },
-                                    icon: Icon(FontAwesomeIcons.handPeace,
+                        : Wrap(children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                myText("Excited to collaborate",
+                                    getFontSize(24)), // Adjust font size
+                                myText(
+                                  "Let’s connect and turn ideas into reality!",
+                                  getFontSize(18), // Adjust font size
+                                ),
+                                const SizedBox(height: 12),
+                                OutlinedButton.icon(
+                                  onPressed: () {
+                                    navigateToPage(context, ContactForm());
+                                  },
+                                  icon: Icon(FontAwesomeIcons.handPeace,
+                                      color: isLoading
+                                          ? AppColors.valhalla
+                                          : AppColors.paleSlate),
+                                  label: const Text("Let’s Connect"),
+                                  style: OutlinedButton.styleFrom(
+                                    foregroundColor: isLoading
+                                        ? AppColors.ebony
+                                        : AppColors.paleSlate,
+                                    side: BorderSide(
                                         color: isLoading
-                                            ? AppColors.valhalla
+                                            ? AppColors.ebony
                                             : AppColors.paleSlate),
-                                    label: const Text("Let’s Connect"),
-                                    style: OutlinedButton.styleFrom(
-                                      foregroundColor: isLoading
-                                          ? AppColors.ebony
-                                          : AppColors.paleSlate,
-                                      side: BorderSide(
-                                          color: isLoading
-                                              ? AppColors.ebony
-                                              : AppColors.paleSlate),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
                                   ),
-                                ],
-                              ),
-                            ]),
-                          ),
+                                ),
+                              ],
+                            ),
+                          ]),
                   ),
                 ),
               ),
