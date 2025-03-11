@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:porfolio/constants/colors.dart';
 import 'package:porfolio/screens/widgets/download_cv_widget.dart';
-import 'package:porfolio/screens/widgets/socail_section.dart';
 import 'package:porfolio/screens/widgets/social_widget.dart';
 import 'package:porfolio/screens/widgets/text_widet.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -23,15 +21,14 @@ class HeaderTextWidget extends StatelessWidget {
             : CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Container(
-              child: TextWidget(
+          TextWidget(
             sSize: size,
-            text: "I am Jobin",
+            text: "I am Dimple",
             color: Colors.white,
             size: 26,
-            fw: FontWeight.bold,
+            fw: FontWeight.w400,
             alignment: TextAlign.center,
-          )),
+          ),
           GradientTextWidget(
             size: size,
             alignment: TextAlign.center,
@@ -41,13 +38,14 @@ class HeaderTextWidget extends StatelessWidget {
           SizedBox(
             width: size.width * 0.5,
             child: TextWidget(
-                sSize: size,
-                alignment: TextAlign.center,
-                text:
-                    "I break down complex user experinece problems to create integritiy focussed solutions that connect billions of people",
-                size: 16,
-                color: Colors.white,
-                fw: FontWeight.normal),
+              sSize: size,
+              alignment: TextAlign.center,
+              text:
+                  "Enthusiastic and motivated Flutter developer always eager to learn and grow. With expertise in mobile app development and a passion for emerging technologies, I strive to stay up-to-date with the latest Flutter updates and trends to deliver cutting-edge, efficient, and scalable applications.",
+              size: 16,
+              color: Colors.white,
+              fw: FontWeight.normal,
+            ),
           ),
         ],
       ),
@@ -80,8 +78,8 @@ class GradientTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GradientText(
       textAlign: size.width < 600 && alignment != null ? alignment : null,
-      "${text1}\n${text2??""}",
-      colors: [
+      "$text1\n${text2 ?? ""}",
+      colors: const [
         AppColors.studio,
         AppColors.paleSlate,
       ],
@@ -103,9 +101,9 @@ class Social_large extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: size.width * 0.5,
-      child: Row(
+      child: const Row(
         children: [
           DownloadCVButton(),
           SizedBox(
