@@ -246,11 +246,6 @@ class ContactFormWidget extends StatelessWidget {
                   subjectController.clear();
                   emailController.clear();
                   messageController.clear();
-                  // ScaffoldMessenger.of(context).showSnackBar(
-                  //   const SnackBar(
-                  //     content: Text('Email sent successfully!'),
-                  //   ),
-                  // );
                 }
               },
               child: const Text("Send"),

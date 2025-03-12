@@ -15,8 +15,12 @@ class _CustomTabBarState extends State<CustomTabBar> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    double tabBarWidth =
-        size.width > 950 ? size.width * 0.36 : size.width * 0.50;
+    double tabBarWidth = size.width > 950
+        ? size.width * 0.36
+        : size.width < 600
+            ? size.width * 0.70
+            : size.width * 0.50;
+    double tabfontSize = size.width < 600 ? 14 : 18;
 
     return Container(
       width: tabBarWidth,
@@ -39,14 +43,14 @@ class _CustomTabBarState extends State<CustomTabBar> {
           borderRadius: BorderRadius.circular(20),
         ),
         indicatorSize: TabBarIndicatorSize.tab,
-        labelStyle: const TextStyle(
-          fontSize: 18, // Increase font size
+        labelStyle: TextStyle(
+          fontSize: tabfontSize, // Increase font size
           fontWeight: FontWeight.bold,
         ),
         labelColor: Colors.white,
         unselectedLabelColor: Colors.grey,
-        labelPadding: const EdgeInsets.symmetric(
-          horizontal: 25.0,
+        labelPadding: EdgeInsets.symmetric(
+          horizontal: size.width < 600 ? 10.0 : 25.0,
         ),
       ),
     );
@@ -74,28 +78,29 @@ class CustomTabBarView extends StatelessWidget {
         'description':
             "The Fitness Tracker web application built with the MERN stack, designed to help users manage and track their fitness journey. It allows users to log workouts, view personalized diet plans, shop for fitness equipment and supplements, and manage their profiles"
       },
-      {
-        'imagePath': 'assets/images/wordpress.png',
-        'title': 'UI/UX',
-        'description':
-            "The Coffee House website is a responsive and customizable platform designed for coffee shops. Built on WordPress, it features an interactive menu, online ordering, customer reviews, and SEO optimization. With key plugins like WooCommerce and Elementor."
-      },
+      // {
+      //   'imagePath': 'assets/images/wordpress.png',
+      //   'title': 'UI/UX',
+      //   'description':
+      //       "The Coffee House website is a responsive and customizable platform designed for coffee shops. Built on WordPress, it features an interactive menu, online ordering, customer reviews, and SEO optimization. With key plugins like WooCommerce and Elementor."
+      // },
       {
         'imagePath': 'assets/images/wordpress1.png',
         'title': 'UI/UX',
         'description':
             "The Coffee House website is a responsive and customizable platform designed for coffee shops. Built on WordPress, it features an interactive menu, online ordering, customer reviews, and SEO optimization. With key plugins like WooCommerce and Elementor"
       },
-      {
-        'imagePath': 'assets/images/cofee.jpg',
-        'title': 'UI/UX',
-        'description':
-            "The Coffee House website is a responsive and customizable platform designed for coffee shops. Built on WordPress, it features an interactive menu, online ordering, customer reviews, and SEO optimization. With key plugins like WooCommerce and Elementor"
-      },
+      // {
+      //   'imagePath': 'assets/images/cofee.jpg',
+      //   'title': 'UI/UX',
+      //   'description':
+      //       "The Coffee House website is a responsive and customizable platform designed for coffee shops. Built on WordPress, it features an interactive menu, online ordering, customer reviews, and SEO optimization. With key plugins like WooCommerce and Elementor"
+      // },
     ];
 
     return TabBarView(
       controller: tabController,
+      physics: size.width < 600 ? NeverScrollableScrollPhysics() : null,
       children: [
         AllProject(
           size: size,

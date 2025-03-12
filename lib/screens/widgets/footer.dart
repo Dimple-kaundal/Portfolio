@@ -155,7 +155,9 @@ class _FooterState extends State<Footer> {
                                   getFontSize(15)), // Adjust font size
                               const SizedBox(height: 9),
                               OutlinedButton.icon(
-                                onPressed: () {},
+                                onPressed: () {
+                                  navigateToPage(context, ContactForm());
+                                },
                                 icon: Icon(FontAwesomeIcons.handPeace,
                                     color: isLoading
                                         ? AppColors.valhalla

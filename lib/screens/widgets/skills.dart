@@ -41,6 +41,10 @@ class _SkillsState extends State<Skills> with SingleTickerProviderStateMixin {
         _scrollController.jumpTo(
           _scrollController.offset + 1.5,
         );
+        if (_scrollController.offset >=
+            _scrollController.position.maxScrollExtent - 1) {
+          _scrollController.jumpTo(0);
+        }
       }
     });
   }
@@ -125,7 +129,7 @@ class _MySkillsDesState extends State<MySkillsDes> {
             isHovered
                 ? Image.asset(
                     widget.imagePath,
-                    height: widget.isMobile ? 150 : 200,
+                    height: widget.isMobile ? 100 : 200,
                     width: widget.isMobile ? 120 : 200,
                   )
                 : Image.asset(

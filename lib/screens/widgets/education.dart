@@ -41,11 +41,11 @@ class ExperienceEducationScreen extends StatelessWidget {
         title: "My Experience",
         icon: Icons.work,
         details: [
-          ExperienceDetail(
-              "2024 - Present", "Flutter Developer Intern", "C-DAC, Mohali"),
-          ExperienceDetail("2024 - 2024", "Full Stack Web Developer Intern",
+          ExperienceDetail("  Aug 2024 - Present", "Flutter Developer Intern",
+              "C-DAC, Mohali"),
+          ExperienceDetail("2024", "MERN Stack Developer Trainee",
               "Solitaire Infosys Pvt Ltd, Mohali"),
-          ExperienceDetail("2021", "Data Science Intern", "CDAC, Mohali"),
+          ExperienceDetail("2021", "Data Science Trainee", "CDAC, Mohali"),
         ],
       ),
       ExperienceEducationCard(
