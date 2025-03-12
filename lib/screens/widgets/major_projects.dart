@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:porfolio/Reusable%20Functions/navigation.dart';
 import 'package:porfolio/constants/colors.dart';
 import 'package:porfolio/constants/styles.dart';
 import 'package:porfolio/screens/widgets/nav_bar.dart';
@@ -142,6 +143,16 @@ class MyProjectList extends StatelessWidget {
   //   }
   // }
 
+  Future<void> _launchUrl() async {
+    final Uri uri = Uri.parse("https://github.com/Dimple-kaundal");
+
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'Could not launch $uri';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -229,7 +240,9 @@ class MyProjectList extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 15),
                       child: Row(
                         children: [
-                          myElevatedButton("Git Repo", () {}),
+                          myElevatedButton("Git Repo", () {
+                            _launchUrl();
+                          }),
                           if (liveButton) ...[
                             SizedBox(width: screenWidth * 0.02),
                             // myElevatedButton("View Live", _launchURL),

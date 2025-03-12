@@ -147,6 +147,7 @@ class _ContactFormState extends State<ContactForm> {
                     subject: subject,
                     message: message,
                   );
+                  SizedBox(height: 5);
 
                   setState(() {
                     isLoading = false;
@@ -190,45 +191,71 @@ class ContactFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final _formKey = GlobalKey<FormState>();
+    String? validationForm(String validation, String? value) {
+      if (value == null || value.isEmpty) {
+        return validation;
+      }
+      return null; // Return null if validation passes
+    }
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: size.height * 0.05),
-      child: Column(
-        children: [
-          TextWidget(
-            sSize: size,
-            color: AppColors.ebony,
-            text: "Get in Touch",
-          ),
-          SizedBox(height: size.height * 0.05),
-          myTextFormFiled(
-              const Icon(Icons.person), "Subject", subjectController),
-          SizedBox(height: size.height * 0.02),
-          myTextFormFiled(
-              const Icon(Icons.email_outlined), "Email", emailController),
-          SizedBox(height: size.height * 0.02),
-          TextFormField(
-            controller: messageController,
-            keyboardType: TextInputType.multiline,
-            maxLines: null,
-            decoration: InputDecoration(
-              hintText: "Message",
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            TextWidget(
+              sSize: size,
+              color: AppColors.ebony,
+              text: "Get in Touch",
             ),
-          ),
-          SizedBox(height: size.height * 0.02),
-          OutlinedButton(
-            style: ButtonStyle(
-              backgroundColor: WidgetStateProperty.all(AppColors.studio),
-              foregroundColor: WidgetStateProperty.all(Colors.white),
-              side: WidgetStateProperty.all(
-                  const BorderSide(color: AppColors.paleSlate)),
-              fixedSize: WidgetStateProperty.all(const Size(503, 50)),
+            SizedBox(height: size.height * 0.05),
+            myTextFormFiled(
+                const Icon(Icons.person), "Subject", subjectController),
+            SizedBox(height: size.height * 0.02),
+            myTextFormFiled(
+                const Icon(Icons.email_outlined), "Email", emailController),
+            SizedBox(height: size.height * 0.02),
+            TextFormField(
+              controller: messageController,
+              keyboardType: TextInputType.multiline,
+              maxLines: null,
+              decoration: InputDecoration(
+                hintText: "Message",
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+              ),
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: (value) =>
+                  validationForm("This Field is required", value),
             ),
-            onPressed: onSendPressed,
-            child: const Text("Send"),
-          ),
-        ],
+            SizedBox(height: size.height * 0.02),
+            OutlinedButton(
+              style: ButtonStyle(
+                backgroundColor: WidgetStateProperty.all(AppColors.studio),
+                foregroundColor: WidgetStateProperty.all(Colors.white),
+                side: WidgetStateProperty.all(
+                    const BorderSide(color: AppColors.paleSlate)),
+                fixedSize: WidgetStateProperty.all(const Size(503, 50)),
+              ),
+              onPressed: () async {
+                if (_formKey.currentState!.validate()) {
+                  await onSendPressed();
+                  subjectController.clear();
+                  emailController.clear();
+                  messageController.clear();
+                  // ScaffoldMessenger.of(context).showSnackBar(
+                  //   const SnackBar(
+                  //     content: Text('Email sent successfully!'),
+                  //   ),
+                  // );
+                }
+              },
+              child: const Text("Send"),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -247,6 +274,11 @@ class ContactFormWidget extends StatelessWidget {
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'This Field is required';
+        }
+        if (hinttext == "Email" &&
+            !RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
+                .hasMatch(value)) {
+          return 'Please enter a valid email';
         }
         return null;
       },
