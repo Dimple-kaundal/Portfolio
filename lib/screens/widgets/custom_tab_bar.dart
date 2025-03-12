@@ -153,6 +153,7 @@ class AllProject extends StatelessWidget {
           ),
           itemBuilder: (context, index) {
             final project = projects[index];
+            debugPrint("Trying to load: ${project['imagePath']}");
             return ProjectCard(
               imagePath: project['imagePath']!,
               description: project['description']!,
