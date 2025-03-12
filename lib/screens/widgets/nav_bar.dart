@@ -39,8 +39,8 @@ class _NavBarState extends State<NavBar> {
             ),
           ),
           const SizedBox(width: 8),
-          Flexible(
-            child: const Text("Dimple Kaundal",
+          const Flexible(
+            child: Text("Dimple Kaundal",
                 style: TextStyle(
                   color: Colors.white,
                   fontFamily: 'Poppins',
