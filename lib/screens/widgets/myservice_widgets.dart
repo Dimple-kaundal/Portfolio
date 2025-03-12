@@ -31,6 +31,7 @@ class _MyServicesWidgetState extends State<MyServicesWidget> {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: title.length,
       itemBuilder: (context, index) {
         return MouseRegion(
