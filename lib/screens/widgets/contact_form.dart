@@ -6,6 +6,7 @@ import 'package:porfolio/constants/colors.dart';
 import 'package:porfolio/constants/styles.dart';
 import 'package:porfolio/screens/widgets/nav_bar.dart';
 import 'package:porfolio/screens/widgets/text_widet.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 

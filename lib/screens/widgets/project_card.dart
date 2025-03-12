@@ -26,19 +26,16 @@ class _ProjectCardState extends State<ProjectCard> {
     final Size size = MediaQuery.of(context).size;
     final bool isSmallScreen = size.width < 600;
 
-    // Image size logic based on screen width
     double imageHeight = size.width < 528
-        ? size.height * 0.30 // Smaller image for screens less than 528px
+        ? size.height * 0.30
         : (size.width >= 528 && size.width < 600
-            ? size.height * 0.45 // Slightly larger for medium-sized screens
-            : size.height * 0.35); // Normal size for larger screens
-
+            ? size.height * 0.45
+            : size.height * 0.35);
     double imageWidth = size.width < 528
-        ? size.width * 0.80 // Smaller width for screens less than 528px
+        ? size.width * 0.80
         : (size.width >= 528 && size.width < 600
-            ? size.width *
-                0.55 // Medium size for screens between 528px and 600px
-            : size.width * 0.50); // Normal width for larger screens
+            ? size.width * 0.55
+            : size.width * 0.50);
 
     // Font size logic based on screen width
     double titleFontSize = size.width >= 528 && size.width <= 598 ? 20 : 18;
@@ -92,14 +89,12 @@ class _ProjectCardState extends State<ProjectCard> {
                           padding: isSmallScreen
                               ? EdgeInsets.zero
                               : const EdgeInsets.only(left: 20),
-                          child: Expanded(
-                            child: Text(
-                              widget.description,
-                              style: TextStyle(
-                                color: AppColors.paleSlate,
-                                fontFamily: "Poppins",
-                                fontSize: descriptionFontSize,
-                              ),
+                          child: Text(
+                            widget.description,
+                            style: TextStyle(
+                              color: AppColors.paleSlate,
+                              fontFamily: "Poppins",
+                              fontSize: descriptionFontSize,
                             ),
                           ),
                         ),

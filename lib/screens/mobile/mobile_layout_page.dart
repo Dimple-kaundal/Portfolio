@@ -108,23 +108,19 @@ class _MobileLayoutState extends State<MobileLayout>
                     ],
                   ),
                 ),
-                Container(
-                  // width: size.width,
-                  // padding: EdgeInsets.symmetric(vertical: size.width * 0.01),
-                  child: Column(
-                    children: [
-                      GradientTextWidget(
-                        size: size,
-                        text1: "My recent Work",
-                      ),
-                      // SizedBox(
-                      //   height: size.height * 0.01,
-                      // ),
-                      CustomTabBar(
-                        tabController: _tabController,
-                      )
-                    ],
-                  ),
+                Column(
+                  children: [
+                    GradientTextWidget(
+                      size: size,
+                      text1: "My recent Work",
+                    ),
+                    // SizedBox(
+                    //   height: size.height * 0.01,
+                    // ),
+                    CustomTabBar(
+                      tabController: _tabController,
+                    )
+                  ],
                 ),
                 SizedBox(
                   height: size.height,

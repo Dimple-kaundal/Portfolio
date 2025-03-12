@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:porfolio/constants/colors.dart';
 import 'package:porfolio/screens/widgets/project_card.dart';
@@ -62,7 +63,9 @@ class CustomTabBarView extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     final List<Map<String, String>> allProjects = [
       {
-        'imagePath': 'assets/images/wbl.png',
+        'imagePath': kIsWeb
+            ? 'https://dimplekaundalsportfolio.netlify.app/assets/images/wbl.png'
+            : 'assets/images/wbl.png',
         'title': 'App Development',
         'description':
             "The Work-Based Learning (WBL) App is a mobile application designed to support the Ministry of Electronics and IT’s (MeitY) Work-Based Learning Programme aimed at empowering fresh Graduate Engineers from marginalized sections such as SC, ST, Women, and EWS Candidates"
