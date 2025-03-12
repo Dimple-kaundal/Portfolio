@@ -29,22 +29,6 @@ class SocialWidget extends StatelessWidget {
   }
 
   // Function to send email
-  Future<void> _launchEmail() async {
-    final Uri emailUri = Uri(
-      scheme: 'mailto',
-      path: 'dimplekaundal595@gmail.com', // Replace with your email
-      queryParameters: {
-        'subject': 'Hello, I saw your portfolio!',
-        'body': 'I wanted to reach out to you...'
-      },
-    );
-
-    if (await canLaunch(emailUri.toString())) {
-      await launch(emailUri.toString());
-    } else {
-      throw 'Could not send email';
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +43,7 @@ class SocialWidget extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.transparent,
             shape: BoxShape.circle,
+            // ignore: deprecated_member_use
             border: Border.all(color: AppColors.studio.withOpacity(0.5)),
           ),
           child: Center(

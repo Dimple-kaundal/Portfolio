@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:porfolio/Reusable%20Functions/navigation.dart';
 import 'package:porfolio/constants/colors.dart';
 import 'package:porfolio/constants/styles.dart';
 import 'package:porfolio/screens/widgets/nav_bar.dart';
@@ -23,7 +22,7 @@ class MajorProjects extends StatelessWidget {
               isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
           mainAxisAlignment:
               isMobile ? MainAxisAlignment.center : MainAxisAlignment.start,
-          children: [
+          children: const [
             Padding(
               padding: EdgeInsets.only(top: 50),
               child: Text(
