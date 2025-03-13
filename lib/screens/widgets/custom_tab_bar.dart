@@ -143,10 +143,8 @@ class AllProject extends StatelessWidget {
     return Container(
       margin: size.width < 600
           ? EdgeInsets.symmetric(horizontal: size.width * 0.05)
-          : EdgeInsets.symmetric(
-              horizontal: size.width * 0.10), // No margin for small screens
-      padding: EdgeInsets.all(
-          size.width < 600 ? 0 : 20), // No padding for small screens
+          : EdgeInsets.symmetric(horizontal: size.width * 0.10),
+      padding: EdgeInsets.all(size.width < 600 ? 7 : 20),
       child: Center(
         child: GridView.builder(
           itemCount: projects.length,

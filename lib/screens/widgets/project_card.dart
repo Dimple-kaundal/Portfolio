@@ -27,15 +27,15 @@ class _ProjectCardState extends State<ProjectCard> {
     final bool isSmallScreen = size.width < 600;
 
     double imageHeight = size.width < 528
-        ? size.height * 0.30
+        ? size.height * 0.20
         : (size.width >= 528 && size.width < 600
             ? size.height * 0.45
             : size.height * 0.35);
     double imageWidth = size.width < 528
-        ? size.width * 0.80
+        ? size.width * 0.90
         : (size.width >= 528 && size.width < 600
             ? size.width * 0.55
-            : size.width * 0.50);
+            : size.width * 0.80);
 
     // Font size logic based on screen width
     double titleFontSize = size.width >= 528 && size.width <= 598 ? 20 : 18;

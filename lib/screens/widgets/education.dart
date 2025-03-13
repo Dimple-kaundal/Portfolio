@@ -12,23 +12,27 @@ class ExperienceEducationScreen extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, constraints) {
           bool isTablet = constraints.maxWidth < 900;
+          bool isMobile = constraints.maxWidth < 600;
 
-          return SingleChildScrollView(
-            child: isTablet
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: _buildCards(),
-                  )
-                : Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Flexible(child: _buildCards()[0]),
-                      const SizedBox(width: 16),
-                      Flexible(child: _buildCards()[1]),
-                    ],
-                  ),
+          return Padding(
+            padding: EdgeInsets.symmetric(horizontal: isMobile ? 16.0 : 0),
+            child: SingleChildScrollView(
+              child: isTablet
+                  ? Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: _buildCards(),
+                    )
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(child: _buildCards()[0]),
+                        const SizedBox(width: 16),
+                        Flexible(child: _buildCards()[1]),
+                      ],
+                    ),
+            ),
           );
         },
       ),
