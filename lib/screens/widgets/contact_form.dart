@@ -100,7 +100,7 @@ class _ContactFormState extends State<ContactForm> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Image(image: AssetImage('images/contactform.jpeg')),
+              Image.asset('images/contactform.png'),
               SizedBox(height: size.height * 0.02),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
