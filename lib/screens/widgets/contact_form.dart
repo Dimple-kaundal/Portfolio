@@ -192,7 +192,7 @@ class ContactFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final _formKey = GlobalKey<FormState>();
+    final formKey = GlobalKey<FormState>();
     String? validationForm(String validation, String? value) {
       if (value == null || value.isEmpty) {
         return validation;
@@ -203,7 +203,7 @@ class ContactFormWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: size.height * 0.05),
       child: Form(
-        key: _formKey,
+        key: formKey,
         child: Column(
           children: [
             TextWidget(
@@ -241,7 +241,7 @@ class ContactFormWidget extends StatelessWidget {
                 fixedSize: WidgetStateProperty.all(const Size(503, 50)),
               ),
               onPressed: () async {
-                if (_formKey.currentState!.validate()) {
+                if (formKey.currentState!.validate()) {
                   await onSendPressed();
                   subjectController.clear();
                   emailController.clear();

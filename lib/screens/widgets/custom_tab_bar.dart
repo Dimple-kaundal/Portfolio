@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:porfolio/constants/colors.dart';
 import 'package:porfolio/screens/widgets/project_card.dart';
@@ -78,24 +77,12 @@ class CustomTabBarView extends StatelessWidget {
         'description':
             "The Fitness Tracker web application built with the MERN stack, designed to help users manage and track their fitness journey. It allows users to log workouts, view personalized diet plans, shop for fitness equipment and supplements, and manage their profiles"
       },
-      // {
-      //   'imagePath': 'assets/images/wordpress.png',
-      //   'title': 'UI/UX',
-      //   'description':
-      //       "The Coffee House website is a responsive and customizable platform designed for coffee shops. Built on WordPress, it features an interactive menu, online ordering, customer reviews, and SEO optimization. With key plugins like WooCommerce and Elementor."
-      // },
       {
         'imagePath': 'assets/images/wordpress1.png',
         'title': 'UI/UX',
         'description':
             "The Coffee House website is a responsive and customizable platform designed for coffee shops. Built on WordPress, it features an interactive menu, online ordering, customer reviews, and SEO optimization. With key plugins like WooCommerce and Elementor"
       },
-      // {
-      //   'imagePath': 'assets/images/cofee.jpg',
-      //   'title': 'UI/UX',
-      //   'description':
-      //       "The Coffee House website is a responsive and customizable platform designed for coffee shops. Built on WordPress, it features an interactive menu, online ordering, customer reviews, and SEO optimization. With key plugins like WooCommerce and Elementor"
-      // },
     ];
 
     return TabBarView(
@@ -144,7 +131,7 @@ class AllProject extends StatelessWidget {
       margin: size.width < 600
           ? EdgeInsets.symmetric(horizontal: size.width * 0.05)
           : EdgeInsets.symmetric(horizontal: size.width * 0.10),
-      padding: EdgeInsets.all(size.width < 600 ? 7 : 20),
+      padding: EdgeInsets.all(size.width < 600 ? 21 : 20),
       child: Center(
         child: GridView.builder(
           itemCount: projects.length,
