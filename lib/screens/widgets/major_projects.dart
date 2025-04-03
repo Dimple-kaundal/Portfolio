@@ -18,10 +18,10 @@ class MajorProjects extends StatelessWidget {
         width: double.infinity,
         decoration: Styles.gradientDecoration,
         child: Column(
-          crossAxisAlignment:
-              isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
-          mainAxisAlignment:
-              isMobile ? MainAxisAlignment.center : MainAxisAlignment.start,
+          // crossAxisAlignment:
+          //     isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+          // mainAxisAlignment:
+          //     isMobile ? MainAxisAlignment.center : MainAxisAlignment.start,
           children: const [
             Padding(
               padding: EdgeInsets.only(top: 50),
@@ -35,12 +35,18 @@ class MajorProjects extends StatelessWidget {
               ),
             ),
             SizedBox(height: 15),
-            Text(
-              "Take a look at some of the projects I've poured my passion and skills into. Each one reflects my dedication to creating seamless and impactful digital experiences. Dive into my work!",
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.normal,
-                color: AppColors.paleSlate,
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Text(
+                "Take a look at some of the projects I've poured my passion and skills into. Each one reflects my dedication to creating seamless and impactful digital experiences. Dive into my work!",
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.normal,
+                  color: AppColors.paleSlate,
+                ),
+                textAlign: TextAlign.justify,
+
+                // overflow: TextOverflow.ellipsis,
               ),
             ),
             SizedBox(height: 49),

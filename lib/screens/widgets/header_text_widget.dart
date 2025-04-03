@@ -39,7 +39,7 @@ class HeaderTextWidget extends StatelessWidget {
             width: size.width * 0.5,
             child: TextWidget(
               sSize: size,
-              alignment: TextAlign.center,
+              // alignment: TextAlign.justify,
               text:
                   "Enthusiastic and motivated Flutter developer always eager to learn and grow. With expertise in mobile app development and a passion for emerging technologies, I strive to stay up-to-date with the latest Flutter updates and trends to deliver cutting-edge, efficient, and scalable applications.",
               size: 16,

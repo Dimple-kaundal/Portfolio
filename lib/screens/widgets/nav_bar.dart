@@ -19,6 +19,7 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     bool isSmallScreen = size.width < 415;
+
     return AppBar(
       title: Row(
         children: [
@@ -52,27 +53,59 @@ class _NavBarState extends State<NavBar> {
       backgroundColor: AppColors.valhalla,
       elevation: 0,
       actions: [
-        NavButton(
-          title: 'Home',
-          onTap: () {
-            navigateToPage(context, const HomePage());
-          },
-          isSmallScreen: isSmallScreen,
-        ),
-        NavButton(
-          title: 'Projects',
-          onTap: () {
-            navigateToPage(context, const MajorProjects());
-          },
-          isSmallScreen: isSmallScreen,
-        ),
-        NavButton(
-          title: 'Contact',
-          onTap: () {
-            navigateToPage(context, const ContactForm());
-          },
-          isSmallScreen: isSmallScreen,
-        ),
+        // For large screens
+        if (!isSmallScreen) ...[
+          NavButton(
+            title: 'Home',
+            onTap: () {
+              navigateToPage(context, const HomePage());
+            },
+          ),
+          NavButton(
+            title: 'Projects',
+            onTap: () {
+              navigateToPage(context, const MajorProjects());
+            },
+          ),
+          NavButton(
+            title: 'Contact',
+            onTap: () {
+              navigateToPage(context, const ContactForm());
+            },
+          ),
+        ],
+        // For small screens - Hamburger menu
+        if (isSmallScreen)
+          PopupMenuButton<String>(
+            icon: const Icon(Icons.menu, color: AppColors.paleSlate),
+            itemBuilder: (BuildContext context) => [
+              PopupMenuItem<String>(
+                value: 'Home',
+                child: const Text('Home'),
+              ),
+              PopupMenuItem<String>(
+                value: 'Projects',
+                child: const Text('Projects'),
+              ),
+              PopupMenuItem<String>(
+                value: 'Contact',
+                child: const Text('Contact'),
+              ),
+            ],
+            onSelected: (value) {
+              switch (value) {
+                case 'Home':
+                  navigateToPage(context, const HomePage());
+                  break;
+                case 'Projects':
+                  navigateToPage(context, const MajorProjects());
+                  break;
+                case 'Contact':
+                  navigateToPage(context, const ContactForm());
+                  break;
+              }
+            },
+          ),
       ],
     );
   }
@@ -81,27 +114,21 @@ class _NavBarState extends State<NavBar> {
 class NavButton extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
-  final bool isSmallScreen;
 
-  const NavButton(
-      {super.key,
-      required this.title,
-      required this.onTap,
-      required this.isSmallScreen});
+  const NavButton({super.key, required this.title, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(children: [
-      TextButton(
-        onPressed: onTap,
-        child: Text(
-          title,
-          style: TextStyle(
-              color: Colors.white,
-              fontFamily: "Poppins",
-              fontSize: isSmallScreen ? 10 : 15),
+    return TextButton(
+      onPressed: onTap,
+      child: Text(
+        title,
+        style: const TextStyle(
+          color: Colors.white,
+          fontFamily: "Poppins",
+          fontSize: 15,
         ),
       ),
-    ]);
+    );
   }
 }

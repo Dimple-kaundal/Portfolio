@@ -131,10 +131,12 @@ class _TabletLayoutState extends State<TabletLayout>
                 SizedBox(
                   height: size.height * 0.10,
                 ),
-                Container(
-                    height: MediaQuery.of(context).size.height * .75,
-                    color: AppColors.ebony,
-                    child: const ExperienceEducationScreen()),
+                SingleChildScrollView(
+                  child: Container(
+                      // height: MediaQuery.of(context).size.height * .75,
+                      color: AppColors.ebony,
+                      child: Column(children: [ExperienceEducationScreen()])),
+                ),
                 SizedBox(
                   height: size.width * 0.05,
                 ),

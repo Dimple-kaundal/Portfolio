@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:porfolio/Reusable%20Functions/navigation.dart';
 import 'package:porfolio/constants/colors.dart';
 import 'package:porfolio/screens/widgets/contact_form.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -106,9 +105,9 @@ class _FooterState extends State<Footer> {
                           IconButtons(FontAwesomeIcons.github, () {
                             widget._launchGitHub();
                           }),
-                          IconButtons(FontAwesomeIcons.envelope, () {
-                            widget._launchEmail();
-                          }),
+                          // IconButtons(FontAwesomeIcons.envelope, () {
+                          //   widget._launchEmail();
+                          // }),
                         ],
                       ),
                     ],
@@ -156,7 +155,12 @@ class _FooterState extends State<Footer> {
                               const SizedBox(height: 9),
                               OutlinedButton.icon(
                                 onPressed: () {
-                                  navigateToPage(context, ContactForm());
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const ContactForm()),
+                                  );
                                 },
                                 icon: Icon(FontAwesomeIcons.handPeace,
                                     color: isLoading
@@ -191,7 +195,12 @@ class _FooterState extends State<Footer> {
                                 const SizedBox(height: 12),
                                 OutlinedButton.icon(
                                   onPressed: () {
-                                    navigateToPage(context, ContactForm());
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const ContactForm()),
+                                    );
                                   },
                                   icon: Icon(FontAwesomeIcons.handPeace,
                                       color: isLoading

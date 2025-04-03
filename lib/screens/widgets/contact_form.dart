@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:porfolio/constants/colors.dart';
 import 'package:porfolio/constants/styles.dart';
 import 'package:porfolio/screens/widgets/nav_bar.dart';
 import 'package:porfolio/screens/widgets/text_widet.dart';
-// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
@@ -62,8 +60,8 @@ class _ContactFormState extends State<ContactForm> {
     return Scaffold(
       appBar: const NavBar(),
       body: Container(
-        height: double.infinity,
-        width: double.infinity,
+        // height: double.infinity,
+        // width: double.infinity,
         decoration: Styles.gradientDecoration,
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -71,20 +69,31 @@ class _ContactFormState extends State<ContactForm> {
             vertical: size.height * 0.05,
           ),
           child: Card(
-            color: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: isSmallScreen
-                  ? Column(
-                      // Use Column when screen < 900
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: buildContent(size, isSmallScreen),
-                    )
-                  : Row(
-                      // Use Row when screen >= 900
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: buildContent(size, isSmallScreen),
-                    ),
+            child: Container(
+              color: Colors.white,
+              child: Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: isSmallScreen
+                      ? SingleChildScrollView(
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              maxHeight: size.height * 0.9,
+                            ),
+                            child: Column(
+                              // Use Column when screen < 900
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: buildContent(size, isSmallScreen),
+                            ),
+                          ),
+                        )
+                      : Row(
+                          // Use Row when screen >= 900
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: buildContent(size, isSmallScreen),
+                        ),
+                ),
+              ),
             ),
           ),
         ),
@@ -95,80 +104,80 @@ class _ContactFormState extends State<ContactForm> {
   // Extracted widget function to avoid repetition
   List<Widget> buildContent(Size size, bool isSmallScreen) {
     return [
-      Expanded(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('images/contactform.png'),
-              SizedBox(height: size.height * 0.02),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MyIconButton(
-                    icon: FontAwesomeIcons.linkedin,
-                    onPressed: () {
-                      widget._launchLinkedIn();
-                    },
-                  ),
-                  MyIconButton(
-                    icon: FontAwesomeIcons.github,
-                    onPressed: () {
-                      widget._launchGitHub();
-                    },
-                  ),
-                ],
-              ),
-            ],
-          ),
+      Flexible(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/images/form.png',
+              height: isSmallScreen ? size.height * .4 : null,
+            ),
+
+            // SizedBox(height: size.height * 0.02),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     MyIconButton(
+            //       icon: FontAwesomeIcons.linkedin,
+            //       onPressed: () {
+            //         // widget._launchLinkedIn();
+            //       },
+            //     ),
+            //     MyIconButton(
+            //       icon: FontAwesomeIcons.github,
+            //       onPressed: () {
+            //         widget._launchGitHub();
+            //       },
+            //     ),
+            //   ],
+            // ),
+          ],
         ),
       ),
       if (!isSmallScreen)
         const SizedBox(width: 50), // Add spacing in Row layout
       Expanded(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ContactFormWidget(
-                onSendPressed: () async {
-                  setState(() {
-                    isLoading = true;
-                    statusMessage = "";
-                  });
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ContactFormWidget(
+              onSendPressed: () async {
+                setState(() {
+                  isLoading = true;
+                  statusMessage = "";
+                });
 
-                  String name = subjectController.text;
-                  String email = emailController.text;
-                  String message = messageController.text;
-                  String subject = "Contact Form Message";
+                String name = subjectController.text;
+                String email = emailController.text;
+                String message = messageController.text;
+                String subject = "Contact Form Message";
 
-                  bool success = await SendEmail(
-                    name: name,
-                    email: email,
-                    subject: subject,
-                    message: message,
-                  );
-                  SizedBox(height: 5);
+                bool success = await SendEmail(
+                  name: name,
+                  email: email,
+                  subject: subject,
+                  message: message,
+                );
+                SizedBox(height: 5);
 
-                  setState(() {
-                    isLoading = false;
-                    if (success) {
-                      statusMessage = "Email sent successfully!";
-                    } else {
-                      statusMessage = "Failed to send email.";
-                    }
-                  });
-                },
-                subjectController: subjectController,
-                emailController: emailController,
-                messageController: messageController,
-              ),
-              if (isLoading) const CircularProgressIndicator(),
-              if (statusMessage.isNotEmpty)
-                Text(statusMessage,
-                    style: const TextStyle(color: AppColors.studio)),
-            ],
-          ),
+                setState(() {
+                  isLoading = false;
+                  if (success) {
+                    statusMessage = "Email sent successfully!";
+                  } else {
+                    statusMessage = "Failed to send email.";
+                  }
+                });
+              },
+              subjectController: subjectController,
+              emailController: emailController,
+              messageController: messageController,
+            ),
+            if (isLoading) const CircularProgressIndicator(),
+            if (statusMessage.isNotEmpty)
+              Text(statusMessage,
+                  style: const TextStyle(color: AppColors.studio)),
+          ],
         ),
       ),
     ];
@@ -211,7 +220,7 @@ class ContactFormWidget extends StatelessWidget {
               color: AppColors.ebony,
               text: "Get in Touch",
             ),
-            SizedBox(height: size.height * 0.05),
+            SizedBox(height: size.height * 0.01),
             myTextFormFiled(
                 const Icon(Icons.person), "Subject", subjectController),
             SizedBox(height: size.height * 0.02),

@@ -9,12 +9,17 @@ class SocialWidget extends StatelessWidget {
   const SocialWidget({super.key});
 
   Future<void> _launchLinkedIn() async {
-    const url =
-        'https://www.linkedin.com/in/dimple-kaundal-87a355191/?viewAsMember=true';
-    if (await canLaunch(url)) {
-      await launch(url);
+    final Uri linkedInAppUri =
+        Uri.parse("linkedin://profile/dimple-kaundal-87a355191");
+    final Uri linkedInWebUri =
+        Uri.parse("https://www.linkedin.com/in/dimple-kaundal-87a355191");
+
+    if (await canLaunchUrl(linkedInAppUri)) {
+      // Open in LinkedIn App
+      await launchUrl(linkedInAppUri);
     } else {
-      throw 'Could not launch $url';
+      // Open in external browser instead of WebView
+      await launchUrl(linkedInWebUri, mode: LaunchMode.externalApplication);
     }
   }
 
