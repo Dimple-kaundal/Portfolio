@@ -5,8 +5,8 @@ import 'package:porfolio/constants/colors.dart';
 import 'package:porfolio/constants/styles.dart';
 import 'package:porfolio/screens/widgets/nav_bar.dart';
 import 'package:porfolio/screens/widgets/text_widet.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
-import 'package:url_launcher/url_launcher.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,26 +18,6 @@ void main() async {
 }
 
 class ContactForm extends StatefulWidget {
-  Future<void> _launchLinkedIn() async {
-    const url =
-        'https://www.linkedin.com/in/dimple-kaundal-87a355191/?viewAsMember=true';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
-  Future<void> _launchGitHub() async {
-    const url =
-        'https://github.com/Dimple-kaundal'; // Replace with your GitHub username
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
   const ContactForm({super.key});
 
   @override
@@ -312,6 +292,7 @@ class MyIconButton extends StatelessWidget {
   }
 }
 
+// ignore: non_constant_identifier_names
 Future<bool> SendEmail({
   required String name,
   required String email,
