@@ -28,22 +28,6 @@ class Footer extends StatefulWidget {
   }
 
   // Function to send email
-  Future<void> _launchEmail() async {
-    final Uri emailUri = Uri(
-      scheme: 'mailto',
-      path: 'dimplekaundal595@gmail.com', // Replace with your email
-      queryParameters: {
-        'subject': 'Hello, I saw your portfolio!',
-        'body': 'I wanted to reach out to you...'
-      },
-    );
-
-    if (await canLaunch(emailUri.toString())) {
-      await launch(emailUri.toString());
-    } else {
-      throw 'Could not send email';
-    }
-  }
 
   @override
   State<Footer> createState() => _FooterState();

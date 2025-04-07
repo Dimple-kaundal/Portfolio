@@ -5,7 +5,6 @@ import 'package:porfolio/constants/colors.dart';
 import 'package:porfolio/constants/styles.dart';
 import 'package:porfolio/screens/widgets/nav_bar.dart';
 import 'package:porfolio/screens/widgets/text_widet.dart';
-// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 
 void main() async {
@@ -18,6 +17,8 @@ void main() async {
 }
 
 class ContactForm extends StatefulWidget {
+
+
   const ContactForm({super.key});
 
   @override
@@ -292,7 +293,6 @@ class MyIconButton extends StatelessWidget {
   }
 }
 
-// ignore: non_constant_identifier_names
 Future<bool> SendEmail({
   required String name,
   required String email,
