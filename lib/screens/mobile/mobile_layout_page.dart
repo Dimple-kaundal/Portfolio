@@ -5,6 +5,7 @@ import 'package:porfolio/screens/tablet/tablet_layout_page.dart';
 import 'package:porfolio/screens/widgets/custom_tab_bar.dart';
 import 'package:porfolio/screens/widgets/education.dart';
 import 'package:porfolio/screens/widgets/footer.dart';
+import 'package:porfolio/screens/widgets/footer_Test.dart';
 import 'package:porfolio/screens/widgets/header_text_widget.dart';
 import 'package:porfolio/screens/widgets/myservice_widgets.dart';
 import 'package:porfolio/screens/widgets/nav_bar.dart';
@@ -39,7 +40,7 @@ class _MobileLayoutState extends State<MobileLayout>
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: const NavBar(),
+      // appBar: const NavBar(),
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -159,7 +160,7 @@ class _MobileLayoutState extends State<MobileLayout>
                   /// 🛠️ **Fixed Footer**
                   SizedBox(
                     height: size.height * 0.50,
-                    child: const Footer(),
+                    child: CustomFooter(),
                   ),
                 ],
               ),

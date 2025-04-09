@@ -11,6 +11,7 @@ class AppColors {
   static const Color revolver = Color(0xFF271b3d);
   static const Color cocoaBrown = Color(0xFF332222);
   static const Color capeCod = Color(0xFF414443);
+    static const Color lightLavender = Color(0xFFAA96C7);
 
 // This variable is used to define the padding-right in some layouts
 

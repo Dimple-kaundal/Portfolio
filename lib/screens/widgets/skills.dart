@@ -129,8 +129,8 @@ class _MySkillsDesState extends State<MySkillsDes> {
             isHovered
                 ? Image.asset(
                     widget.imagePath,
-                    height: widget.isMobile ? 100 : 200,
-                    width: widget.isMobile ? 120 : 200,
+                    height: widget.isMobile ? 180 : 100,
+                    width: widget.isMobile ? 200 : 100,
                   )
                 : Image.asset(
                     widget.imagePath,

@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:porfolio/Reusable%20Functions/navigation.dart';
 import 'package:porfolio/constants/colors.dart';
 import 'package:porfolio/screens/widgets/contact_form.dart';
+import 'package:porfolio/screens/widgets/my_contact_from.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SocialWidget extends StatelessWidget {
@@ -107,7 +108,7 @@ class SocialWidget extends StatelessWidget {
             child: IconButton(
               hoverColor: AppColors.paleSlate,
               onPressed: () {
-                navigateToPage(context, ContactForm());
+                navigateToPage(context, ContactPage());
                 // Email URL
               },
               icon: const FaIcon(

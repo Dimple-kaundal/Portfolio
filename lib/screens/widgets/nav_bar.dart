@@ -4,6 +4,7 @@ import 'package:porfolio/constants/colors.dart';
 import 'package:porfolio/screens/home_page.dart';
 import 'package:porfolio/screens/widgets/contact_form.dart';
 import 'package:porfolio/screens/widgets/major_projects.dart';
+import 'package:porfolio/screens/widgets/my_contact_from.dart';
 
 class NavBar extends StatefulWidget implements PreferredSizeWidget {
   const NavBar({super.key});
@@ -70,42 +71,38 @@ class _NavBarState extends State<NavBar> {
           NavButton(
             title: 'Contact',
             onTap: () {
-              navigateToPage(context, const ContactForm());
+              navigateToPage(context, ContactPage());
             },
           ),
         ],
         // For small screens - Hamburger menu
-        if (isSmallScreen)
-          PopupMenuButton<String>(
-            icon: const Icon(Icons.menu, color: AppColors.paleSlate),
-            itemBuilder: (BuildContext context) => [
-              PopupMenuItem<String>(
-                value: 'Home',
-                child: const Text('Home'),
-              ),
-              PopupMenuItem<String>(
-                value: 'Projects',
-                child: const Text('Projects'),
-              ),
-              PopupMenuItem<String>(
-                value: 'Contact',
-                child: const Text('Contact'),
-              ),
-            ],
-            onSelected: (value) {
-              switch (value) {
-                case 'Home':
-                  navigateToPage(context, const HomePage());
-                  break;
-                case 'Projects':
-                  navigateToPage(context, const MajorProjects());
-                  break;
-                case 'Contact':
-                  navigateToPage(context, const ContactForm());
-                  break;
-              }
-            },
-          ),
+        // if (isSmallScreen)
+        //   PopupMenuButton<String>(
+        //     icon: const Icon(Icons.menu, color: AppColors.paleSlate),
+        //     itemBuilder: (BuildContext context) => [
+        //       PopupMenuItem<String>(
+        //         value: 'Home',
+        //         child: const Text('Home'),
+        //       ),
+        //       PopupMenuItem<String>(
+        //         value: 'Projects',
+        //         child: const Text('Projects'),
+        //       ),
+        //       PopupMenuItem<String>(
+        //         value: 'Contact',
+        //         child: const Text('Contact'),
+        //       ),
+        //     ],
+        //     onSelected: (value) {
+        //       if (value == 'Home') {
+        //         navigateToPage(context, const HomePage());
+        //       } else if (value == 'Projects') {
+        //         navigateToPage(context, const MajorProjects());
+        //       } else if (value == 'Contact') {
+        //         navigateToPage(context, const ContactForm());
+        //       }
+        //     },
+        //   ),
       ],
     );
   }

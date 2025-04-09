@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:porfolio/constants/colors.dart';
 import 'package:porfolio/screens/widgets/contact_form.dart';
+import 'package:porfolio/screens/widgets/my_contact_from.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Footer extends StatefulWidget {
@@ -124,8 +125,7 @@ class _FooterState extends State<Footer> {
                       color:
                           isLoading ? AppColors.paleSlate : AppColors.valhalla,
                       borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: isTablet
+                    ),child: isTablet
                         ? Column(
                             children: [
                               myText("Excited to collaborate",
@@ -143,7 +143,7 @@ class _FooterState extends State<Footer> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const ContactForm()),
+                                            ContactPage()),
                                   );
                                 },
                                 icon: Icon(FontAwesomeIcons.handPeace,

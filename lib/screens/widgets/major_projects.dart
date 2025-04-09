@@ -12,7 +12,7 @@ class MajorProjects extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     bool isMobile = screenWidth < 600;
     return Scaffold(
-      appBar: const NavBar(),
+      appBar: screenWidth > 600 ? NavBar() : null,
       body: Container(
         height: double.infinity,
         width: double.infinity,
