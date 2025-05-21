@@ -21,74 +21,27 @@ class ContactPage extends StatelessWidget {
       appBar: MediaQuery.of(context).size.width > 600 ? NavBar() : null,
       body: Container(
         decoration: Styles.gradientDecoration,
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Container(
-            child: Card(
-              color: Colors.white,
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  if (constraints.maxWidth > 600) {
-                    return const RowLayout();
-                  } else {
-                    return const ColumnLayout();
-                  }
-                },
+        alignment: Alignment.center,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24.0),
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 600),
+              child: Card(
+                color: Colors.white,
+                elevation: 4,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.all(24.0),
+                  child: ContactForm(),
+                ),
               ),
             ),
           ),
         ),
       ),
-    );
-  }
-}
-
-class RowLayout extends StatelessWidget {
-  const RowLayout({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Center(
-            child: Container(
-              height: MediaQuery.of(context).size.height * .61,
-              padding: const EdgeInsets.all(20),
-              color: Colors.white,
-              child: Image.asset('assets/images/wbl.png', fit: BoxFit.contain),
-            ),
-          ),
-        ),
-        const Expanded(
-          child: ContactForm(),
-        ),
-      ],
-    );
-  }
-}
-
-class ColumnLayout extends StatelessWidget {
-  const ColumnLayout({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(children: [
-        Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(20),
-              color: Colors.white,
-              child: SizedBox(
-                height: 200, // Adjust this height as needed
-                child: Image.asset('images/person.png', fit: BoxFit.contain),
-              ),
-            ),
-            const ContactForm(),
-          ],
-        ),
-      ]),
     );
   }
 }
@@ -119,142 +72,133 @@ class _ContactFormState extends State<ContactForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "Get in Touch",
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 24),
-              TextFormField(
-                autovalidateMode: formSubmitted
-                    ? AutovalidateMode.disabled
-                    : AutovalidateMode.onUserInteraction,
-                controller: _subjectController,
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.person_outline),
-                  hintText: "Subject",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                  ),
-                ),
-                validator: (value) =>
-                    value == null || value.isEmpty ? 'Enter subject' : null,
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                autovalidateMode: formSubmitted
-                    ? AutovalidateMode.disabled
-                    : AutovalidateMode.onUserInteraction,
-                controller: _emailController,
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.email_outlined),
-                  hintText: "Email",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                  ),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Enter email';
-                  } else if (!RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}")
-                      .hasMatch(value)) {
-                    return 'Enter valid email';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                autovalidateMode: formSubmitted
-                    ? AutovalidateMode.disabled
-                    : AutovalidateMode.onUnfocus,
-                controller: _messageController,
-                maxLines: 3,
-                decoration: const InputDecoration(
-                  hintText: "Message",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                  ),
-                ),
-                validator: (value) =>
-                    value == null || value.isEmpty ? 'Enter message' : null,
-              ),
-              const SizedBox(height: 24),
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    if (_formKey.currentState!.validate()) {
-                      setState(() {
-                        isLoading = true;
-                        statusMessage = "";
-                        formSubmitted = false; // Reset formSubmitted flag
-                      });
-
-                      String subject = _subjectController.text;
-                      String email = _emailController.text;
-                      String message = _messageController.text;
-
-                      bool success = await SendEmail(
-                        name: subject,
-                        email: email,
-                        subject: subject,
-                        message: message,
-                      );
-
-                      setState(() {
-                        isLoading = false;
-                        formSubmitted = true; // Mark the form as submitted
-
-                        if (success) {
-                          statusMessage = "Email sent successfully!";
-                          // Clear the text fields after submission
-                          _subjectController.clear();
-                          _emailController.clear();
-                          _messageController.clear();
-                        } else {
-                          statusMessage = "Failed to send email.";
-                        }
-                      });
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.studio, // Your custom color
-                    shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(30), // Rounded corners
-                    ),
-                  ),
-                  child: const Text(
-                    "Send",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-              // Add a SizedBox between the button and CircularProgressIndicator
-              const SizedBox(height: 20),
-              if (isLoading) const Center(child: CircularProgressIndicator()),
-              // Add a SizedBox between CircularProgressIndicator and status message
-              const SizedBox(height: 20),
-              if (statusMessage.isNotEmpty)
-                Center(
-                  child: Text(
-                    statusMessage,
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                ),
-            ],
+    return Form(
+      key: _formKey,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            "Get in Touch",
+            style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
           ),
-        ),
+          const SizedBox(height: 24),
+          TextFormField(
+            autovalidateMode: formSubmitted
+                ? AutovalidateMode.disabled
+                : AutovalidateMode.onUserInteraction,
+            controller: _subjectController,
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.person_outline),
+              hintText: "Subject",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+              ),
+            ),
+            validator: (value) =>
+                value == null || value.isEmpty ? 'Enter subject' : null,
+          ),
+          const SizedBox(height: 16),
+          TextFormField(
+            autovalidateMode: formSubmitted
+                ? AutovalidateMode.disabled
+                : AutovalidateMode.onUserInteraction,
+            controller: _emailController,
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.email_outlined),
+              hintText: "Email",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+              ),
+            ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Enter email';
+              } else if (!RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}")
+                  .hasMatch(value)) {
+                return 'Enter valid email';
+              }
+              return null;
+            },
+          ),
+          const SizedBox(height: 16),
+          TextFormField(
+            autovalidateMode: formSubmitted
+                ? AutovalidateMode.disabled
+                : AutovalidateMode.onUnfocus,
+            controller: _messageController,
+            maxLines: 3,
+            decoration: const InputDecoration(
+              hintText: "Message",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+              ),
+            ),
+            validator: (value) =>
+                value == null || value.isEmpty ? 'Enter message' : null,
+          ),
+          const SizedBox(height: 24),
+          SizedBox(
+            width: double.infinity,
+            height: 50,
+            child: ElevatedButton(
+              onPressed: () async {
+                if (_formKey.currentState!.validate()) {
+                  setState(() {
+                    isLoading = true;
+                    statusMessage = "";
+                    formSubmitted = false;
+                  });
+
+                  String subject = _subjectController.text;
+                  String email = _emailController.text;
+                  String message = _messageController.text;
+
+                  bool success = await SendEmail(
+                    name: subject,
+                    email: email,
+                    subject: subject,
+                    message: message,
+                  );
+
+                  setState(() {
+                    isLoading = false;
+                    formSubmitted = true;
+
+                    if (success) {
+                      statusMessage = "Email sent successfully!";
+                      _subjectController.clear();
+                      _emailController.clear();
+                      _messageController.clear();
+                    } else {
+                      statusMessage = "Failed to send email.";
+                    }
+                  });
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.studio,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+              ),
+              child: const Text(
+                "Send",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
+          if (isLoading) const Center(child: CircularProgressIndicator()),
+          const SizedBox(height: 20),
+          if (statusMessage.isNotEmpty)
+            Center(
+              child: Text(
+                statusMessage,
+                style: const TextStyle(color: Colors.black),
+              ),
+            ),
+        ],
       ),
     );
   }

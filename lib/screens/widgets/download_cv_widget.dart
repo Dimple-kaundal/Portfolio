@@ -11,7 +11,7 @@ class DownloadCVButton extends StatelessWidget {
   // Method to launch the CV URL for download
   Future<void> downloadCV() async {
     const String fileUrl =
-        'https://drive.google.com/open?id=1X1yvKaOPIjaSFc1x3qlI52OLFOhEh51p&usp=drive_fs'; // Replace with your actual file URL
+        'https://drive.google.com/file/d/1LjWG-XhlSvqU7nHzNwriA-_-Sul5Wl4H/view?usp=drive_link'; // Replace with your actual file URL
 
     // Launch the URL to trigger the download
     if (await canLaunch(fileUrl)) {
