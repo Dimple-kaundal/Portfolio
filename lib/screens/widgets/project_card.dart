@@ -37,17 +37,17 @@ class _ProjectCardState extends State<ProjectCard> {
             ? size.width * 0.55
             : size.width * 0.80);
 
-    // Font size logic based on screen width
+
     double titleFontSize = size.width >= 528 && size.width <= 598 ? 20 : 18;
     double descriptionFontSize =
         size.width >= 528 && size.width <= 598 ? 14 : (isSmallScreen ? 10 : 15);
 
-    // Adjusting the margin between image and text
+   
     double spacing = isSmallScreen
-        ? 10.0 // Smaller spacing for small screens
+        ? 10.0
         : (size.width < 600 && size.width > 528
-            ? 20.0 // Medium spacing for screens between 528px and 600px
-            : 30.0); // Larger spacing for larger screens
+            ? 20.0 
+            : 30.0); 
 
     return MouseRegion(
       onEnter: (_) => _onHover(true),
@@ -84,7 +84,7 @@ class _ProjectCardState extends State<ProjectCard> {
                         ),
                         SizedBox(
                             height:
-                                spacing), // Add dynamic space between image and text
+                                spacing),
                         Padding(
                           padding: isSmallScreen
                               ? EdgeInsets.zero

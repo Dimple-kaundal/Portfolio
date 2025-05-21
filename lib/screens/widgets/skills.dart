@@ -74,7 +74,7 @@ class _SkillsState extends State<Skills> with SingleTickerProviderStateMixin {
             child: MySkillsDes(
               imagePath: skill["imagePath"],
               name: skill["name"],
-              isMobile: isMobile, // Pass this flag to the child widget
+              isMobile: isMobile, 
             ),
           );
         },
@@ -92,7 +92,7 @@ class MySkillsDes extends StatefulWidget {
     super.key,
     required this.imagePath,
     required this.name,
-    required this.isMobile, // Receive the flag to adjust layout
+    required this.isMobile, 
   });
 
   @override
@@ -106,9 +106,9 @@ class _MySkillsDesState extends State<MySkillsDes> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    // For mobile, increase container width and show only 2 items at a time
+ 
     double containerWidth = widget.isMobile
-        ? size.width * 0.45 // Make container width bigger on mobile
+        ? size.width * 0.45
         : (size.width < 900 ? size.width * 0.25 : size.width * 0.16);
 
     return MouseRegion(
@@ -118,7 +118,7 @@ class _MySkillsDesState extends State<MySkillsDes> {
         duration: const Duration(milliseconds: 300),
         width: containerWidth,
         height:
-            containerWidth, // Make height equal to width for square containers
+            containerWidth, 
         decoration: BoxDecoration(
           color: AppColors.ebony,
           borderRadius: BorderRadius.circular(12),
@@ -148,7 +148,7 @@ class _MySkillsDesState extends State<MySkillsDes> {
                   fontFamily: "Poppins",
                   fontWeight: isHovered ? FontWeight.bold : FontWeight.w500,
                   fontSize:
-                      widget.isMobile ? 18 : 25, // Adjust font size for mobile
+                      widget.isMobile ? 18 : 25, 
                 ),
               ),
             ),

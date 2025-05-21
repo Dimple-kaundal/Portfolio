@@ -8,12 +8,12 @@ class DownloadCVButton extends StatelessWidget {
     super.key,
   });
 
-  // Method to launch the CV URL for download
+
   Future<void> downloadCV() async {
     const String fileUrl =
-        'https://drive.google.com/file/d/1LjWG-XhlSvqU7nHzNwriA-_-Sul5Wl4H/view?usp=drive_link'; // Replace with your actual file URL
+        'https://drive.google.com/file/d/1LjWG-XhlSvqU7nHzNwriA-_-Sul5Wl4H/view?usp=drive_link'; 
 
-    // Launch the URL to trigger the download
+   
     if (await canLaunch(fileUrl)) {
       await launch(fileUrl);
     } else {
@@ -24,7 +24,7 @@ class DownloadCVButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: downloadCV, // Trigger download when the button is clicked
+      onTap: downloadCV, 
       child: Container(
         height: 50,
         width: 250,

@@ -15,17 +15,17 @@ class SocialWidget extends StatelessWidget {
         Uri.parse("https://www.linkedin.com/in/dimple-kaundal-87a355191");
 
     if (await canLaunchUrl(linkedInAppUri)) {
-      // Open in LinkedIn App
+    
       await launchUrl(linkedInAppUri);
     } else {
-      // Open in external browser instead of WebView
+      
       await launchUrl(linkedInWebUri, mode: LaunchMode.externalApplication);
     }
   }
 
   Future<void> _launchGitHub() async {
     const url =
-        'https://github.com/Dimple-kaundal'; // Replace with your GitHub username
+        'https://github.com/Dimple-kaundal'; 
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -33,7 +33,7 @@ class SocialWidget extends StatelessWidget {
     }
   }
 
-  // Function to send email
+  
 
   @override
   Widget build(BuildContext context) {
@@ -41,14 +41,14 @@ class SocialWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        // LinkedIn Button
+       
         Container(
           height: 40,
           width: 40,
           decoration: BoxDecoration(
             color: Colors.transparent,
             shape: BoxShape.circle,
-            // ignore: deprecated_member_use
+            
             border: Border.all(color: AppColors.studio.withOpacity(0.5)),
           ),
           child: Center(
@@ -56,7 +56,7 @@ class SocialWidget extends StatelessWidget {
               hoverColor: AppColors.paleSlate,
               onPressed: () {
                 _launchLinkedIn();
-                // LinkedIn URL
+            
               },
               icon: const FaIcon(
                 FontAwesomeIcons.linkedinIn,
@@ -68,7 +68,7 @@ class SocialWidget extends StatelessWidget {
         ),
         const SizedBox(width: 10),
 
-        // GitHub Button
+        
         Container(
           height: 40,
           width: 40,
@@ -94,7 +94,7 @@ class SocialWidget extends StatelessWidget {
         ),
         const SizedBox(width: 10),
 
-        // Email Button
+      
         Container(
           height: 40,
           width: 40,

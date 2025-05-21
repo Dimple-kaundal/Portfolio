@@ -123,9 +123,9 @@ class AllProject extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Determine the number of columns dynamically
+   
     int crossAxisCount =
-        size.width > 950 ? 2 : 1; // 2 for desktop, 1 for tablet/mobile
+        size.width > 950 ? 2 : 1; 
 
     return Container(
       margin: size.width < 600
@@ -138,7 +138,7 @@ class AllProject extends StatelessWidget {
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount,
             childAspectRatio:
-                size.width > 600 ? 3 / 2 : 3 / 3, // Bigger cards for tablet
+                size.width > 600 ? 3 / 2 : 3 / 3, 
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
           ),

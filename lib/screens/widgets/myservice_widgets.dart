@@ -39,7 +39,7 @@ class _MyServicesWidgetState extends State<MyServicesWidget> {
           onExit: (_) => setState(() => _isHovered[index] = false),
           child: AnimatedContainer(
             padding: const EdgeInsets.symmetric(
-                horizontal: 20, vertical: 20), // Reduce vertical padding
+                horizontal: 20, vertical: 20), 
             duration: const Duration(microseconds: 300),
             curve: Curves.easeInOut,
             margin: EdgeInsets.symmetric(horizontal: widget.size.width * 0.05),
@@ -61,9 +61,9 @@ class _MyServicesWidgetState extends State<MyServicesWidget> {
                 ? Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment:
-                        MainAxisAlignment.spaceBetween, // Adjusted spacing
+                        MainAxisAlignment.spaceBetween, 
                     children: [
-                      // Index Text (e.g., "1")
+                     
                       TextWidget(
                         sSize: widget.size,
                         text: "${index + 1}",
@@ -71,8 +71,8 @@ class _MyServicesWidgetState extends State<MyServicesWidget> {
                         color: Colors.white,
                       ),
                       SizedBox(
-                          width: widget.size.height * 0.05), // Reduced space
-                      // Title Text
+                          width: widget.size.height * 0.05), 
+                    
                       Expanded(
                         child: TextWidget(
                           sSize: widget.size,
@@ -82,8 +82,8 @@ class _MyServicesWidgetState extends State<MyServicesWidget> {
                         ),
                       ),
                       SizedBox(
-                          width: widget.size.height * 0.01), // Reduced space
-                      // Description Text
+                          width: widget.size.height * 0.01), 
+                      
                       Expanded(
                         child: TextWidget(
                           sSize: widget.size,
@@ -92,7 +92,7 @@ class _MyServicesWidgetState extends State<MyServicesWidget> {
                           color: Colors.white,
                         ),
                       ),
-                      // Icon for hover state
+                     
                       FaIcon(
                         _isHovered[index]
                             ? FontAwesomeIcons.arrowTrendUp
@@ -105,7 +105,7 @@ class _MyServicesWidgetState extends State<MyServicesWidget> {
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Index Text (e.g., "1")
+                    
                       TextWidget(
                         sSize: widget.size,
                         text: "${index + 1}",
@@ -113,8 +113,8 @@ class _MyServicesWidgetState extends State<MyServicesWidget> {
                         color: Colors.white,
                       ),
                       SizedBox(
-                          height: widget.size.height * 0.01), // Reduced space
-                      // Title Text
+                          height: widget.size.height * 0.01),
+                     
                       TextWidget(
                         sSize: widget.size,
                         text: title[index],
@@ -122,8 +122,8 @@ class _MyServicesWidgetState extends State<MyServicesWidget> {
                         color: Colors.white,
                       ),
                       SizedBox(
-                          height: widget.size.height * 0.01), // Reduced space
-                      // Description Text
+                          height: widget.size.height * 0.01), 
+                      
                       Wrap(
                         direction: Axis.horizontal,
                         children: [

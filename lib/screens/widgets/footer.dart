@@ -19,7 +19,7 @@ class Footer extends StatefulWidget {
 
   Future<void> _launchGitHub() async {
     const url =
-        'https://github.com/Dimple-kaundal'; // Replace with your GitHub username
+        'https://github.com/Dimple-kaundal'; 
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -27,7 +27,6 @@ class Footer extends StatefulWidget {
     }
   }
 
-  // Function to send email
 
   @override
   State<Footer> createState() => _FooterState();
@@ -42,12 +41,11 @@ class _FooterState extends State<Footer> {
     bool isTablet = size.width < 1120;
     bool isMobile = size.width < 600;
 
-    // Function to adjust font size based on screen width
     double getFontSize(double baseSize) {
       if (isMobile) {
-        return baseSize * 0.8; // Reduce font size for mobile (less than 600px)
+        return baseSize * 0.8;
       }
-      return baseSize; // Use the base size for larger screens
+      return baseSize;
     }
 
     return Wrap(
@@ -62,7 +60,7 @@ class _FooterState extends State<Footer> {
                 left: 0,
                 right: 0,
                 child: Container(
-                  // height: MediaQuery.of(context).size.height * (350 / 1080),
+                 
                   decoration: const BoxDecoration(
                     color: AppColors.ebony,
                   ),
@@ -75,7 +73,7 @@ class _FooterState extends State<Footer> {
                         "Living, learning, & leveling up\none day at a time.",
                         textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(
-                          fontSize: getFontSize(14), // Adjust font size
+                          fontSize: getFontSize(14),
                           color: Colors.white70,
                         ),
                       ),
@@ -89,9 +87,7 @@ class _FooterState extends State<Footer> {
                           IconButtons(FontAwesomeIcons.github, () {
                             widget._launchGitHub();
                           }),
-                          // IconButtons(FontAwesomeIcons.envelope, () {
-                          //   widget._launchEmail();
-                          // }),
+                        
                         ],
                       ),
                     ],
@@ -128,13 +124,13 @@ class _FooterState extends State<Footer> {
                         ? Column(
                             children: [
                               myText("Excited to collaborate",
-                                  getFontSize(22)), // Adjust font size
+                                  getFontSize(22)), 
                               SizedBox(
                                   height:
                                       MediaQuery.of(context).size.height * .02),
                               myText(
                                   "Let’s connect and turn ideas into reality!",
-                                  getFontSize(15)), // Adjust font size
+                                  getFontSize(15)), 
                               const SizedBox(height: 9),
                               OutlinedButton.icon(
                                 onPressed: () {
@@ -170,10 +166,10 @@ class _FooterState extends State<Footer> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 myText("Excited to collaborate",
-                                    getFontSize(24)), // Adjust font size
+                                    getFontSize(24)), 
                                 myText(
                                   "Let’s connect and turn ideas into reality!",
-                                  getFontSize(18), // Adjust font size
+                                  getFontSize(18),
                                 ),
                                 const SizedBox(height: 12),
                                 OutlinedButton.icon(

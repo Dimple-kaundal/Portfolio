@@ -18,10 +18,7 @@ class MajorProjects extends StatelessWidget {
         width: double.infinity,
         decoration: Styles.gradientDecoration,
         child: Column(
-          // crossAxisAlignment:
-          //     isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
-          // mainAxisAlignment:
-          //     isMobile ? MainAxisAlignment.center : MainAxisAlignment.start,
+       
           children: const [
             Padding(
               padding: EdgeInsets.only(top: 50),
@@ -46,7 +43,6 @@ class MajorProjects extends StatelessWidget {
                 ),
                 textAlign: TextAlign.justify,
 
-                // overflow: TextOverflow.ellipsis,
               ),
             ),
             SizedBox(height: 49),
@@ -95,7 +91,7 @@ class _MyProjectsListState extends State<MyProjectsList> {
     double screenWidth = MediaQuery.of(context).size.width;
     int crossAxisCount = 3;
 
-    // **🔧 Fix: Correct CrossAxisCount Handling**
+   
     if (screenWidth < 600) {
       crossAxisCount = 1;
     } else if (screenWidth < 1300) {
@@ -138,15 +134,7 @@ class MyProjectList extends StatelessWidget {
     required this.technology,
   });
 
-  // Future<void> _launchURL() async {
-  //   const url = 'https://wblp.in/';
-  //   final Uri uri = Uri.parse(url);
-  //   if (await canLaunch(uri.toString())) {
-  //     await launch(uri.toString());
-  //   } else {
-  //     throw 'Could not launch $url';
-  //   }
-  // }
+
 
   Future<void> _launchUrl() async {
     final Uri uri = Uri.parse("https://github.com/Dimple-kaundal");
@@ -165,13 +153,12 @@ class MyProjectList extends StatelessWidget {
 
     bool liveButton = title == 'Work Based Learning Program';
 
-    // **📌 Adjust Card Sizing Dynamically**
     double cardHeight =
         screenWidth < 900 ? screenHeight * 0.25 : screenHeight * 0.50;
     double cardWidth =
         screenWidth < 900 ? screenWidth * 0.70 : screenWidth * 0.35;
 
-    // **📌 Adjust Font Sizes Dynamically**
+  
     double fontSizeTitle = screenWidth < 900 ? 16 : 22;
     double fontSizeTech = screenWidth < 900 ? 15 : 16;
     double fontSizeDescription = screenWidth < 900 ? 15 : 17;
@@ -181,11 +168,11 @@ class MyProjectList extends StatelessWidget {
           horizontal: screenHeight * .009, vertical: screenWidth * .009),
       child: SizedBox(
         width: cardWidth,
-        // height: 250,
+      
         child: SizedBox(
           height: cardHeight,
           child: Card(
-            // color: Colors.red,
+          
             elevation: 4,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
@@ -204,7 +191,7 @@ class MyProjectList extends StatelessWidget {
                           vertical: cardWidth * .02),
                       child: Image(
                         image: image,
-                        // height: cardHeight * 0.55,
+                    
                         width: double.infinity,
                         fit: BoxFit.cover,
                       ),
@@ -250,7 +237,7 @@ class MyProjectList extends StatelessWidget {
                           }),
                           if (liveButton) ...[
                             SizedBox(width: screenWidth * 0.02),
-                            // myElevatedButton("View Live", _launchURL),
+                          
                           ]
                         ],
                       ),

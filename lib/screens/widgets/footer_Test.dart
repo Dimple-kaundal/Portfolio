@@ -19,7 +19,7 @@ class CustomFooter extends StatelessWidget {
 
   Future<void> _launchGitHub() async {
     const url =
-        'https://github.com/Dimple-kaundal'; // Replace with your GitHub username
+        'https://github.com/Dimple-kaundal'; 
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -125,7 +125,7 @@ class CustomFooter extends StatelessWidget {
                 ),
         ),
 
-        // Bottom black footer
+     
         Container(
           width: double.infinity,
           padding: const EdgeInsets.only(top: 24, bottom: 32),
