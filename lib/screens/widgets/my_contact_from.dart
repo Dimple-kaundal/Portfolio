@@ -56,7 +56,8 @@ class RowLayout extends StatelessWidget {
               height: MediaQuery.of(context).size.height * .61,
               padding: const EdgeInsets.all(20),
               color: Colors.white,
-              child: Image.asset('images/person.png', fit: BoxFit.contain),
+              child:
+                  Image.asset('assets/images/person.png', fit: BoxFit.contain),
             ),
           ),
         ),
