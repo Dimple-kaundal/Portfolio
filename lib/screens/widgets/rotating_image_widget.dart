@@ -28,7 +28,7 @@ class _RotatingImageContainerState extends State<RotatingImageContainer> {
                 fit: BoxFit.cover,
                 image: AssetImage('assets/images/newimage.jpg')),
             border: Border.all(color: AppColors.studio, width: 1.2),
-            borderRadius: BorderRadius.circular(20)), 
+            borderRadius: BorderRadius.circular(20)),
       ),
     );
   }
