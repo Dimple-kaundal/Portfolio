@@ -26,6 +26,6 @@ class MyApp extends StatelessWidget {
             return HomePage();
           }
         }));
-    // home: CustomFooter());
+        // home: CustomFooter());
   }
 }

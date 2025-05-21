@@ -3,7 +3,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:porfolio/constants/colors.dart';
-import 'package:porfolio/screens/widgets/nav_bar.dart';
 
 class NewLoginpageFormat extends StatefulWidget {
   NewLoginpageFormat(

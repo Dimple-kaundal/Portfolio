@@ -4,7 +4,6 @@ import 'package:porfolio/constants/styles.dart';
 import 'package:porfolio/screens/widgets/custom_tab_bar.dart';
 import 'package:porfolio/screens/widgets/download_cv_widget.dart';
 import 'package:porfolio/screens/widgets/education.dart';
-import 'package:porfolio/screens/widgets/footer.dart';
 import 'package:porfolio/screens/widgets/footer_Test.dart';
 import 'package:porfolio/screens/widgets/header_text_widget.dart';
 import 'package:porfolio/screens/widgets/myservice_widgets.dart';

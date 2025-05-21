@@ -36,7 +36,7 @@ class MajorProjects extends StatelessWidget {
             ),
             SizedBox(height: 15),
             Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
+              padding: EdgeInsets.only(left: 20, right: 20),
               child: Text(
                 "Take a look at some of the projects I've poured my passion and skills into. Each one reflects my dedication to creating seamless and impactful digital experiences. Dive into my work!",
                 style: TextStyle(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:porfolio/Reusable%20Functions/navigation.dart';
 import 'package:porfolio/constants/colors.dart';
 import 'package:porfolio/screens/home_page.dart';
-import 'package:porfolio/screens/widgets/contact_form.dart';
 import 'package:porfolio/screens/widgets/major_projects.dart';
 import 'package:porfolio/screens/widgets/my_contact_from.dart';
 
